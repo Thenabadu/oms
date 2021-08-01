@@ -14,7 +14,7 @@ public class OrderInfo {
 
     @Id
     @Column(name = "order_id")
-    private String orderId;
+    private Long orderId;
 
     @Column(name = "region", nullable = false)
     private String region;
@@ -38,22 +38,22 @@ public class OrderInfo {
     private Date shipDate;
 
     @Column(name = "units_sold", nullable = false)
-    private int noOfUnits;
+    private Integer noOfUnits;
 
     @Column(name = "unit_price", nullable = false)
-    private double unitPrice;
+    private Double unitPrice;
 
     @Column(name = "unit_cost", nullable = false)
-    private double unitCost;
+    private Double unitCost;
 
     @Column(name = "total_revenue", nullable = false)
-    private double totalRevenue;
+    private Double totalRevenue;
 
     @Column(name = "total_cost", nullable = false)
-    private double totalCost;
+    private Double totalCost;
 
     @Column(name = "total_profit", nullable = false)
-    private double totalProfit;
+    private Double totalProfit;
 
     @Column(name = "nric", nullable = false)
     private String nric;

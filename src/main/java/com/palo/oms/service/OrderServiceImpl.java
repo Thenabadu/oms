@@ -4,6 +4,8 @@ import com.palo.oms.model.OrderInfo;
 import com.palo.oms.repository.OrderRepository;
 import com.palo.oms.util.CSVUtil;
 import com.palo.oms.view_model.OrderInfoVM;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +21,9 @@ import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
+
+    private static final Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
+
 
     @Autowired
     private OrderRepository orderRepository;
@@ -41,6 +46,7 @@ public class OrderServiceImpl implements OrderService {
         OrderInfoVM orderInfoVM = new OrderInfoVM();
         orderInfoVM.setTotalCount(page.getTotalPages());
         orderInfoVM.setOrderInfos(page.getContent());
+        logger.info("getOrderDetails: " + orderInfoVM);
         return orderInfoVM;
     }
 }

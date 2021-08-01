@@ -111,7 +111,7 @@ public class CSVUtil {
         try {
             OrderInfo orderInfo = new OrderInfo();
 
-            orderInfo.setOrderId(orderID);
+            orderInfo.setOrderId(Long.parseLong(orderID));
             orderInfo.setRegion(region);
             orderInfo.setCountry(country);
             orderInfo.setItemType(itemType);
