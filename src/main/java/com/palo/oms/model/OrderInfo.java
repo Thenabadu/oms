@@ -1,11 +1,12 @@
 package com.palo.oms.model;
 
 import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -32,10 +33,10 @@ public class OrderInfo {
     private String orderPriority;
 
     @Column(name = "order_date", nullable = false)
-    private Date orderDate;
+    private LocalDate orderDate;
 
     @Column(name = "ship_date", nullable = false)
-    private Date shipDate;
+    private LocalDate shipDate;
 
     @Column(name = "units_sold", nullable = false)
     private Integer noOfUnits;
