@@ -38,8 +38,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderInfoVM getOrderDetails(int pageIndex, int pageSize) {
-        Pageable pageable = PageRequest.of(pageIndex, pageSize, Sort.by("orderDate").descending());
+    public OrderInfoVM getOrderDetails(Pageable pageable) {
         Page<OrderInfo> page = orderRepository.findAll(pageable);
         OrderInfoVM orderInfoVM = new OrderInfoVM();
         orderInfoVM.setTotalCount(page.getTotalElements());

@@ -7,6 +7,7 @@ import com.palo.oms.view_model.OrderInfoVM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,9 +20,11 @@ public class FileController {
     @Value("${app-title}")
     private String projectTitle;
 
-    @Autowired
-    @Qualifier("orderServiceImpl")
-    private OrderService orderService;
+    private final OrderService orderService;
+
+    public FileController(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     @PostMapping("/upload")
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
@@ -41,9 +44,8 @@ public class FileController {
     }
 
     @GetMapping("/order-info")
-    public OrderInfoVM getOrderInfo(@RequestParam("pageIndex") int pageIndex,
-                                    @RequestParam("pageSize") int pageSize) {
-        return orderService.getOrderDetails(pageIndex, pageSize);
+    public OrderInfoVM getOrderInfo(Pageable pageable) {
+        return orderService.getOrderDetails(pageable);
     }
 
     @GetMapping("/")
