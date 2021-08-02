@@ -29,7 +29,7 @@ public class CSVUtil {
     public static List<OrderInfo> convertToOrders(InputStream is) {
         try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
              CSVParser csvParser = new CSVParser(fileReader,
-                     CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim());) {
+                     CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim())) {
 
             List<OrderInfo> orderInfos = new ArrayList<>();
             Iterable<CSVRecord> csvRecords = csvParser.getRecords();

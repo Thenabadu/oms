@@ -25,7 +25,7 @@ public class FileController {
 
     @PostMapping("/upload")
     public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
-        String message = "";
+        String message;
         if (CSVUtil.isInCSVFormat(file)) {
             try {
                 orderService.save(file);

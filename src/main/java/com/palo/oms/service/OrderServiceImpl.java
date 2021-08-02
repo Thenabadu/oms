@@ -30,8 +30,6 @@ public class OrderServiceImpl implements OrderService {
 
     public void save(MultipartFile file) {
         try {
-            //InputStream inputStream  = new FileInputStream("D:\\Interviews\\Palo-IT\\500000-Sales-Records\\500000 Sales Records.csv");
-            //List<OrderInfo> orders = CSVUtil.convertToOrders(inputStream);
             List<OrderInfo> orders = CSVUtil.convertToOrders(file.getInputStream());
             orderRepository.saveAll(orders);
         } catch (IOException e) {
@@ -44,9 +42,9 @@ public class OrderServiceImpl implements OrderService {
         Pageable pageable = PageRequest.of(pageIndex, pageSize, Sort.by("orderDate").descending());
         Page<OrderInfo> page = orderRepository.findAll(pageable);
         OrderInfoVM orderInfoVM = new OrderInfoVM();
-        orderInfoVM.setTotalCount(page.getTotalPages());
+        orderInfoVM.setTotalCount(page.getTotalElements());
         orderInfoVM.setOrderInfos(page.getContent());
-        logger.info("getOrderDetails: " + orderInfoVM);
+        logger.info("getOrderDetails: " + orderInfoVM.getTotalCount());
         return orderInfoVM;
     }
 }

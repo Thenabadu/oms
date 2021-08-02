@@ -7,6 +7,6 @@ import java.util.List;
 
 @Data
 public class OrderInfoVM {
-    private int totalCount;
+    private long totalCount;
     private List<OrderInfo> orderInfos;
 }
